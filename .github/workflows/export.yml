@@ -1,4 +1,4 @@
-name: "Exporting this project to a heroku environment."
+name: "Exporting this deployment to Github Pages."
 
 env:
   GODOT_VERSION: 3.3.4
