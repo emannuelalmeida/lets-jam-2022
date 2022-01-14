@@ -1,0 +1,44 @@
+name: "Exporting this project to a heroku environment."
+
+env:
+  GODOT_VERSION: 3.3.4
+  EXPORT_NAME: game
+
+
+on: 
+  push:
+    branches:
+      - main
+      - "example-project-and-pipeline"
+
+jobs:
+  export-web:
+    name: Export to Web
+    runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:3.3.4
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: Setup
+        run: |
+          mkdir -v -p ~/.local/share/godot/templates
+          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+      - name: Web Build
+        run: |
+          mkdir -v -p build/web
+          cd $EXPORT_NAME
+          godot -v --export "HTML5" ../build/web/index.html
+      - name: Install rsync 📚
+        run: |
+          apt-get update && apt-get install -y rsync
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build/web
+
+          
