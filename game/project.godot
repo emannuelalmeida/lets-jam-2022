@@ -146,6 +146,6 @@ quality/intended_usage/framebuffer_allocation=3
 vram_compression/import_etc=true
 quality/shadows/filter_mode=2
 quality/filters/anisotropic_filter_level=16
-quality/filters/msaa=2
+quality/filters/use_fxaa=true
 quality/filters/anisotropic_filter_level.mobile=4
 quality/filters/msaa.mobile=0
