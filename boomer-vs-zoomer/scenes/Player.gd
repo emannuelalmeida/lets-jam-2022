@@ -16,7 +16,7 @@ func _physics_process(delta):
 	# We create a local variable to store the input direction.
 	var direction = Vector3.ZERO
 	if is_jumping:
-		vertical_velocity += gravityVal * delta
+		vertical_velocity -= gravityVal * delta
 	else:
 		vertical_velocity = 0
 
@@ -35,8 +35,10 @@ func _physics_process(delta):
 		is_jumping = true
 	
 	if direction != Vector3.ZERO:
-		direction = direction.normalized()
-		$Pivot.look_at(translation + direction, Vector3.UP)
+		var lookdirection = Vector3()
+		direction = direction.normalized();
+		lookdirection.x = direction.x
+		$Pivot.look_at(translation + lookdirection, Vector3.UP)
 	
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://textures/street-asphalt-64x64.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://textures/bg1.png" type="Texture" id=3]
 
 [sub_resource type="BoxShape" id=1]
 margin = 0.001
@@ -14,28 +15,51 @@ albedo_texture = ExtResource( 1 )
 material = SubResource( 3 )
 size = Vector3( 60, 2, 10 )
 
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 28.5781, 6.57419, 1.41508 )
+
 [node name="Screen" type="Spatial"]
 
-[node name="Ground" type="StaticBody" parent="."]
+[node name="Stage" type="Node" parent="."]
 
-[node name="CollisionShape" type="CollisionShape" parent="Ground"]
+[node name="Ground" type="StaticBody" parent="Stage"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.05583, 0 )
+visible = false
+
+[node name="CollisionShape" type="CollisionShape" parent="Stage/Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.93334, 0.875593 )
 shape = SubResource( 1 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Ground"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.478968, 0.505478, 0.875151 )
+[node name="MeshInstance" type="MeshInstance" parent="Stage/Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.478968, 4.93073, 0.875151 )
 mesh = SubResource( 2 )
 material/0 = null
 
+[node name="UpperBounds" type="CollisionShape" parent="Stage/Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.24663, -5.03852 )
+shape = SubResource( 4 )
+
+[node name="LowerBounds" type="CollisionShape" parent="Stage/Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00518894, 7.65764, 10.31 )
+shape = SubResource( 4 )
+
+[node name="Background" type="Sprite3D" parent="Stage"]
+transform = Transform( 1.92, 0, 0, 0, 1.35764, 0.707107, 0, -1.35764, 0.707107, 0, -0.505383, -7.73203 )
+texture = ExtResource( 3 )
+
 [node name="Light" type="DirectionalLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.618971, 0.785414, 0, -0.785414, 0.618971, 0, 12.5813, 11.5536 )
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 12.5813, 2.83975 )
 light_color = Color( 0.105882, 0.592157, 0.0509804, 1 )
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.18233, 0 )
+transform = Transform( -1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, -15.2146, 2.18233, 0 )
 collision/safe_margin = 1.0
 
 [node name="CameraPivot" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 12.469, 11.5839 )
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 13.5532, 11.5839 )
 
 [node name="Camera" type="Camera" parent="CameraPivot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.69851, 11.3042 )
+projection = 1
+size = 20.0
