@@ -1,6 +1,6 @@
 extends KinematicBody
 
-const jump_speed = 10
+const jump_speed = 23
 const speed = 14
 
 var velocity = Vector3.ZERO
@@ -34,11 +34,17 @@ func _physics_process(delta):
 		vertical_velocity = jump_speed
 		is_jumping = true
 	
-	if direction != Vector3.ZERO:
+	if(abs(direction.x) > 0):
+		$Pivot/Animation.play("walk")
+	else:
+		$Pivot/Animation.play("idle")
+	
+	if abs(direction.x) > 0.01:
 		var lookdirection = Vector3()
 		direction = direction.normalized();
 		lookdirection.x = direction.x
-		$Pivot.look_at(translation + lookdirection, Vector3.UP)
+		$Pivot/Animation.flip_h = direction.x < -0.01;
+		
 	
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
