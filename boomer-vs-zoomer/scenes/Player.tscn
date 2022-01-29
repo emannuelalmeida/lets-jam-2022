@@ -62,7 +62,7 @@ script = ExtResource( 2 )
 [node name="Pivot" type="Spatial" parent="."]
 
 [node name="Animation" type="AnimatedSprite3D" parent="Pivot"]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.0376344, 0 )
 frames = SubResource( 12 )
 animation = "idle"
 playing = true

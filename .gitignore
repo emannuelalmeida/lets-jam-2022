@@ -7,3 +7,7 @@
 # Mono-specific ignores
 .mono/
 data_*/
+/boomer-vs-zoomer/.vs/BOOMER X ZOOMER/DesignTimeBuild/.dtbcache.v2
+/boomer-vs-zoomer/.vs/BOOMER X ZOOMER/v16/.suo
+/boomer-vs-zoomer/.vscode/launch.json
+/boomer-vs-zoomer/.vscode/tasks.json
