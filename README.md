@@ -1,17 +1,20 @@
 # lets-jam-2022
 Code repository for the 2022 GGJ game
 
--- CURRENT EXAMPLE IS A SAMPLE FROM GODOT'S LIBRARY. IT'S NOT OUR GAME YET --
+## Boomer vs Zoomer
 
-## Team Members:
+## Team Members
 
 * Ursula Batista - Art
 * Giuseppe Oliveira - Art
-* Victor Heder - Art
 * Herbert "Captain" Venancio - Coding
 * Marcos Soares - Coding and Godot evangelist
 * Daniel "Hantaro" Almeida - Soundtrack, FX and some coding as well
 * Ícaro Menezes - Coding and devops stuff
 * Marco "King" - Game design
+
+## Credits and merits
+
+Street pattern texture: https://www.manytextures.com/texture/65/street+asphalt/ (CC)
 
 

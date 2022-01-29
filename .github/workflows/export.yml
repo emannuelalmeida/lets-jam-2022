@@ -2,7 +2,7 @@ name: "Exporting project as artifacts and to Github Pages"
 
 env:
   GODOT_VERSION: 3.4.2
-  EXPORT_NAME: game
+  EXPORT_NAME: boomer-vs-zoomer
 
 on: 
   push:
