@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/THEME 3 EXTENDED.mp3-9f74a8560d13c81e688edc39eb07a42c.mp3str"
+
+[deps]
+
+source_file="res://bgs/THEME 3 EXTENDED.mp3"
+dest_files=[ "res://.import/THEME 3 EXTENDED.mp3-9f74a8560d13c81e688edc39eb07a42c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
