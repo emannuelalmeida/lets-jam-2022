@@ -8,6 +8,8 @@ public class Enemy : KinematicBody
         IDLE,
         FOLLOW,
         ATTACK,
+        ATTACK2,
+        ATTACK3,
         HURT,
         DYING,
     }
@@ -55,6 +57,8 @@ public class Enemy : KinematicBody
         stateMachine.AddState(EnemyStates.IDLE, "idle", null, () => UpdateIdle());
         stateMachine.AddState(EnemyStates.FOLLOW, "run", null, () => UpdateFollow());
         stateMachine.AddState(EnemyStates.ATTACK, "attack", () => OnEnterAttack(), () => UpdateAttack());
+        stateMachine.AddState(EnemyStates.ATTACK2, "attack2", () => OnEnterAttack(), () => UpdateAttack());
+        stateMachine.AddState(EnemyStates.ATTACK3, "attack3", () => OnEnterAttack(), () => UpdateAttack());
         stateMachine.AddState(EnemyStates.HURT, "hurt", null, null);
         stateMachine.AddState(EnemyStates.DYING, "dying", () => OnEnterDying(), () => UpdateDying(deltaRef));
 
@@ -89,7 +93,15 @@ public class Enemy : KinematicBody
             stateMachine.ChangeState(EnemyStates.FOLLOW);
         
         if(playerInAttackRange && canAttack)
-            stateMachine.ChangeState(EnemyStates.ATTACK);
+        {
+            float atkRng = GD.Randf();
+            if(atkRng < 0.5f)
+                stateMachine.ChangeState(EnemyStates.ATTACK);
+            else if(atkRng < 0.8f)
+                stateMachine.ChangeState(EnemyStates.ATTACK2);
+            else 
+                stateMachine.ChangeState(EnemyStates.ATTACK3);
+        }
     }
 
     void UpdateFollow()
@@ -122,7 +134,8 @@ public class Enemy : KinematicBody
     {
         canAttack = false;
 
-        var signal = ToSignal(GetTree().CreateTimer(attackCooldownSeconds, false), "timeout");
+        var cooldown = (float)GD.RandRange(attackCooldownSeconds -0.75d, attackCooldownSeconds + 0.75d);
+        var signal = ToSignal(GetTree().CreateTimer(cooldown, false), "timeout");
 
         signal.OnCompleted(() => {
             canAttack = true;
@@ -164,6 +177,8 @@ public class Enemy : KinematicBody
         switch(animation.Animation)
         {
             case "attack":
+            case "attack2":
+            case "attack3":
                 stateMachine.ChangeState(EnemyStates.IDLE);
                 break;
             case "hurt":

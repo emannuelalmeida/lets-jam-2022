@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Run.png-1bfaea953b4db4f3473831868f18282f.s3tc.stex"
-path.etc2="res://.import/Run.png-1bfaea953b4db4f3473831868f18282f.etc2.stex"
+path.s3tc="res://.import/Attack3.png-635db832d3ba5119b279d28cbac03265.s3tc.stex"
+path.etc2="res://.import/Attack3.png-635db832d3ba5119b279d28cbac03265.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/player/Run.png"
-dest_files=[ "res://.import/Run.png-1bfaea953b4db4f3473831868f18282f.s3tc.stex", "res://.import/Run.png-1bfaea953b4db4f3473831868f18282f.etc2.stex" ]
+source_file="res://textures/enemies/biker/Attack3.png"
+dest_files=[ "res://.import/Attack3.png-635db832d3ba5119b279d28cbac03265.s3tc.stex", "res://.import/Attack3.png-635db832d3ba5119b279d28cbac03265.etc2.stex" ]
 
 [params]
 

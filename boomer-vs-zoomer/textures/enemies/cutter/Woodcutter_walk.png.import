@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/RunAttack1.png-daf654409f092a7e4ca3eb29a24e5422.stex"
+path="res://.import/Woodcutter_walk.png-7d1954c54652418772a823a2d69c5e3e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/player/RunAttack1.png"
-dest_files=[ "res://.import/RunAttack1.png-daf654409f092a7e4ca3eb29a24e5422.stex" ]
+source_file="res://textures/enemies/cutter/Woodcutter_walk.png"
+dest_files=[ "res://.import/Woodcutter_walk.png-7d1954c54652418772a823a2d69c5e3e.stex" ]
 
 [params]
 

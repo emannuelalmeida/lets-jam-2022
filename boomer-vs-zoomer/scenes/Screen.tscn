@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://textures/street-asphalt-64x64.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/Stage.gd" type="Script" id=4]
 [ext_resource path="res://scenes/Camera.gd" type="Script" id=5]
 [ext_resource path="res://scenes/Objects/Enemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Objects/Enemy_wood.tscn" type="PackedScene" id=7]
 
 [sub_resource type="BoxShape" id=1]
 margin = 0.001
@@ -28,7 +29,6 @@ script = ExtResource( 4 )
 
 [node name="Ground" type="StaticBody" parent="Stage"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.05583, 0 )
-visible = false
 
 [node name="CollisionShape" type="CollisionShape" parent="Stage/Ground"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.93334, 0.875593 )
@@ -71,5 +71,8 @@ script = ExtResource( 5 )
 
 [node name="Enemy" parent="." instance=ExtResource( 6 )]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 2.60311, 2.25973, 0.208467 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 7 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -3.92917, 2.4015, -0.622849 )
 
 [connection signal="gameplay_entered" from="Stage/Ground/LowerBounds" to="Player" method="_on_LowerBounds_gameplay_entered"]

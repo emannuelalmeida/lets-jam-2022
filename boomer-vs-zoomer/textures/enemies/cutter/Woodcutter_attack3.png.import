@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Attack1.png-4b1be4723bdc4dbb5c3c5ab377b29c06.s3tc.stex"
-path.etc2="res://.import/Attack1.png-4b1be4723bdc4dbb5c3c5ab377b29c06.etc2.stex"
+path.s3tc="res://.import/Woodcutter_attack3.png-0effaa454ca86940123b38b26773affd.s3tc.stex"
+path.etc2="res://.import/Woodcutter_attack3.png-0effaa454ca86940123b38b26773affd.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/player/Attack1.png"
-dest_files=[ "res://.import/Attack1.png-4b1be4723bdc4dbb5c3c5ab377b29c06.s3tc.stex", "res://.import/Attack1.png-4b1be4723bdc4dbb5c3c5ab377b29c06.etc2.stex" ]
+source_file="res://textures/enemies/cutter/Woodcutter_attack3.png"
+dest_files=[ "res://.import/Woodcutter_attack3.png-0effaa454ca86940123b38b26773affd.s3tc.stex", "res://.import/Woodcutter_attack3.png-0effaa454ca86940123b38b26773affd.etc2.stex" ]
 
 [params]
 
