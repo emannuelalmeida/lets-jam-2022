@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/JUMP KICK.ogg-6c1d31ea7adb974e8fcbb543aeea8351.oggstr"
+
+[deps]
+
+source_file="res://sfx/JUMP KICK.ogg"
+dest_files=[ "res://.import/JUMP KICK.ogg-6c1d31ea7adb974e8fcbb543aeea8351.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

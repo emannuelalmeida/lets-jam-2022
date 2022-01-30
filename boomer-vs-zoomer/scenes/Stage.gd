@@ -13,3 +13,6 @@ func _move_camera_to_next_scene():
 			for i in range(area_size):
 				camera._move_camera_next_area(1)
 				yield(get_tree().create_timer(0.06), "timeout")
+
+func _on_Player_TriggerGameOver():
+	get_tree().change_scene("res://scenes/GameOver.tscn")

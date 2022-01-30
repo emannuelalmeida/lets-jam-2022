@@ -20,6 +20,7 @@ public class Enemy : KinematicBody
     Area attackHitbox;
     Position3D hurtAnimationSource;
     Spatial pivot;
+	AudioStreamPlayer2D enemyHit;
     //===============
 
     StateMachine<EnemyStates> stateMachine;
@@ -55,6 +56,7 @@ public class Enemy : KinematicBody
         animation = GetNode<AnimatedSprite3D>("Pivot/Animation");
         attackHitbox = GetNode<Area>("Pivot/AttackHitbox");
         pivot = GetNode<Spatial>("Pivot");
+		enemyHit = GetNode<AudioStreamPlayer2D>("EnemyHit");
 
         hurtAnimationSource = GetNode<Position3D>("Pivot/AttackHitbox/CollisionShape/HurtAnimationSource");
 
@@ -92,167 +94,169 @@ public class Enemy : KinematicBody
 
 #region States
 
-    void UpdateIdle() 
-    {
-        if(!playerInAttackRange && player != null)
-            stateMachine.ChangeState(EnemyStates.FOLLOW);
-        
-        if(playerInAttackRange && canAttack)
-        {
-            float atkRng = GD.Randf();
-            if(atkRng < 0.5f)
-                stateMachine.ChangeState(EnemyStates.ATTACK);
-            else if(atkRng < 0.8f)
-                stateMachine.ChangeState(EnemyStates.ATTACK2);
-            else 
-                stateMachine.ChangeState(EnemyStates.ATTACK3);
-        }
-    }
+	void UpdateIdle() 
+	{
+		if(!playerInAttackRange && player != null)
+			stateMachine.ChangeState(EnemyStates.FOLLOW);
+		
+		if(playerInAttackRange && canAttack)
+		{
+			float atkRng = GD.Randf();
+			if(atkRng < 0.5f)
+				stateMachine.ChangeState(EnemyStates.ATTACK);
+			else if(atkRng < 0.8f)
+				stateMachine.ChangeState(EnemyStates.ATTACK2);
+			else 
+				stateMachine.ChangeState(EnemyStates.ATTACK3);
+		}
+	}
 
-    void UpdateFollow()
-    {
-        if(player == null)
-        {
-            stateMachine.ChangeState(EnemyStates.IDLE);
-            return;
-        }
+	void UpdateFollow()
+	{
+		if(player == null)
+		{
+			stateMachine.ChangeState(EnemyStates.IDLE);
+			return;
+		}
 
-        if(playerInAttackRange && !canAttack)
-        {
-            stateMachine.ChangeState(EnemyStates.IDLE);
-            return;
-        }
+		if(playerInAttackRange && !canAttack)
+		{
+			stateMachine.ChangeState(EnemyStates.IDLE);
+			return;
+		}
 
-        if(playerInAttackRange && canAttack)
-        {
-            stateMachine.ChangeState(EnemyStates.ATTACK);
-            return;
-        }
+		if(playerInAttackRange && canAttack)
+		{
+			stateMachine.ChangeState(EnemyStates.ATTACK);
+			return;
+		}
 
-        var direction = player.Transform.origin - this.Transform.origin;
-        direction.y = 0;
-        direction = direction.Normalized();
-        translate = direction * MoveSpeed;
-    }
+		var direction = player.Transform.origin - this.Transform.origin;
+		direction.y = 0;
+		direction = direction.Normalized();
+		translate = direction * MoveSpeed;
+	}
 
-    void OnEnterAttack()
-    {
-        canAttack = false;
+	void OnEnterAttack()
+	{
+		canAttack = false;
 
-        var cooldown = (float)GD.RandRange(attackCooldownSeconds -0.75d, attackCooldownSeconds + 0.75d);
-        var signal = ToSignal(GetTree().CreateTimer(cooldown, false), "timeout");
+		var cooldown = (float)GD.RandRange(attackCooldownSeconds -0.75d, attackCooldownSeconds + 0.75d);
+		var signal = ToSignal(GetTree().CreateTimer(cooldown, false), "timeout");
 
-        signal.OnCompleted(() => {
-            canAttack = true;
-            canHit = true;
-        });
+		signal.OnCompleted(() => {
+			canAttack = true;
+			canHit = true;
+		});
 
-        attackHitbox.Monitoring = true;
-    }
+		attackHitbox.Monitoring = true;
+	}
 
-    void UpdateAttack()
-    {
-        if(animation.Frame == 4 && canHit && attackHitbox.OverlapsBody(player))
-        {
-            canHit = false;
-            OnHitPlayer();
-        }
-    }
+	void UpdateAttack()
+	{
+		if(animation.Frame == 4 && canHit && attackHitbox.OverlapsBody(player))
+		{
+			canHit = false;
+			OnHitPlayer();
+		}
+	}
 
-    void OnEnterDying()
-    {
-        invulnerable = true;
-    }
+	void OnEnterDying()
+	{
+		invulnerable = true;
+	}
 
-    void UpdateDying(float delta)
-    {
-        if(dead)
-        {
-            animation.Opacity -= 1 * delta;
+	void UpdateDying(float delta)
+	{
+		if(dead)
+		{
+			animation.Opacity -= 1 * delta;
 
-            if(animation.Opacity <= 0)
-                QueueFree();
-        }
-    }
+			if(animation.Opacity <= 0)
+				QueueFree();
+		}
+	}
 
 #endregion
 
-    public void OnAnimationFinished()
-    {
-        switch(animation.Animation)
-        {
-            case "attack":
-            case "attack2":
-            case "attack3":
-                stateMachine.ChangeState(EnemyStates.IDLE);
-                break;
-            case "hurt":
-                stateMachine.ChangeState(EnemyStates.IDLE);
-                break;
-            case "dying":
-                dead = true;
-                break;
-            default:
-                break;
-        }
-    }
+	public void OnAnimationFinished()
+	{
+		switch(animation.Animation)
+		{
+			case "attack":
+			case "attack2":
+			case "attack3":
+				stateMachine.ChangeState(EnemyStates.IDLE);
+				break;
+			case "hurt":
+				stateMachine.ChangeState(EnemyStates.IDLE);
+				break;
+			case "dying":
+				dead = true;
+				break;
+			default:
+				break;
+		}
+	}
 
-    private void OnHitPlayer()
-    {
-        var instance = hurtAnimation.Instance<Spatial>();
-        hurtAnimationSource.AddChild(instance);
+	private void OnHitPlayer()
+	{
+		var instance = hurtAnimation.Instance<Spatial>();
+		hurtAnimationSource.AddChild(instance);
 
-        player.Call("Hurt", attackDamage);
-    }
+		player.Call("Hurt", attackDamage);
+	}
 
-    public void HurtEnemy(int damage)
-    {
-        if(invulnerable)
-            return;
-        
-        health -= damage;
+	public void HurtEnemy(int damage)
+	{
+		if(invulnerable)
+			return;
+		
+		health -= damage;
 
-        if(health > 0)
-            stateMachine.ChangeState(EnemyStates.HURT);
-        else
-            stateMachine.ChangeState(EnemyStates.DYING);
-    }
+		if(health > 0)
+			stateMachine.ChangeState(EnemyStates.HURT);
+		else
+			stateMachine.ChangeState(EnemyStates.DYING);
+		
+		enemyHit.Play();
+	}
 
 #region Connections
 
-    private void _on_PlayerRange_body_entered(Node body)
-    {
-        if(body.IsInGroup("Player"))
-        {
-            player = body as KinematicBody;
-        }
-    }
+	private void _on_PlayerRange_body_entered(Node body)
+	{
+		if(body.IsInGroup("Player"))
+		{
+			player = body as KinematicBody;
+		}
+	}
 
-    private void _on_PlayerRange_body_exited(Node body)
-    {
-        if(body.IsInGroup("Player"))
-        {
-            player = null;
-        }
-    }
+	private void _on_PlayerRange_body_exited(Node body)
+	{
+		if(body.IsInGroup("Player"))
+		{
+			player = null;
+		}
+	}
 
-    private void _on_InAttackRange_body_entered(Node body)
-    {
-        if(body.IsInGroup("Player"))
-        {
-            playerInAttackRange = true;
-            GD.Print("Player IN range of attack!");
-        }
-    }
+	private void _on_InAttackRange_body_entered(Node body)
+	{
+		if(body.IsInGroup("Player"))
+		{
+			playerInAttackRange = true;
+			GD.Print("Player IN range of attack!");
+		}
+	}
 
-    private void _on_InAttackRange_body_exited(Node body)
-    {
-        if(body.IsInGroup("Player"))
-        {
-            playerInAttackRange = false;
-            GD.Print("Player OUT of range of attack!");
-        }
-    }
+	private void _on_InAttackRange_body_exited(Node body)
+	{
+		if(body.IsInGroup("Player"))
+		{
+			playerInAttackRange = false;
+			GD.Print("Player OUT of range of attack!");
+		}
+	}
 
 #endregion
 }
