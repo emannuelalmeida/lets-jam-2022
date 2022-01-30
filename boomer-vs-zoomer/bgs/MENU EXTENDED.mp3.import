@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/MENU EXTENDED.mp3-86d443ee7b52fae7d38c5416ce4ad4b1.mp3str"
+
+[deps]
+
+source_file="res://bgs/MENU EXTENDED.mp3"
+dest_files=[ "res://.import/MENU EXTENDED.mp3-86d443ee7b52fae7d38c5416ce4ad4b1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
