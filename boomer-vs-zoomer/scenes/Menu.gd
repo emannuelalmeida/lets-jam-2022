@@ -36,7 +36,8 @@ func update_selected_option_color(selected_option):
 			option.add_color_override("default_color", menu_color)
 
 func change_char_screen():
-	#get_tree().change_scene("res://scenes/Char_select.tscn")
+	#get_tree().change_scene("res://scenes/CharSelect.tscn")
+	get_tree().change_scene("res://scenes/Screen.tscn")
 	pass
 	
 func change_credits_screen():
