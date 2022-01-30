@@ -41,8 +41,8 @@ public class CameraMovement : Camera
             if(step > 1)
                 step = 1;
 
-            float newX = cameraPivot.Translation.x;
-            newX = player.Translation.x;
+            float newX = player.Translation.x + 7f;
+            
             newX = Math.Max(minX, newX);
             newX = Math.Min(maxX, newX);
 

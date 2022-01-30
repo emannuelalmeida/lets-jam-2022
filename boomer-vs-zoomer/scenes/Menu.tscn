@@ -86,4 +86,5 @@ __meta__ = {
 
 [node name="Menu theme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+volume_db = -14.857
 autoplay = true

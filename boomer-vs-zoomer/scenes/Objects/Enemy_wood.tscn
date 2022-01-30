@@ -12,44 +12,9 @@
 [ext_resource path="res://sfx/ENEMY HITTED.ogg" type="AudioStream" id=10]
 
 [sub_resource type="AtlasTexture" id=47]
+flags = 19
 atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=48]
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=49]
-atlas = ExtResource( 5 )
-region = Rect2( 48, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=50]
-atlas = ExtResource( 5 )
-region = Rect2( 96, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=35]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=36]
-atlas = ExtResource( 4 )
-region = Rect2( 48, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=37]
-atlas = ExtResource( 4 )
-region = Rect2( 96, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=38]
-atlas = ExtResource( 4 )
-region = Rect2( 144, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=39]
-atlas = ExtResource( 4 )
-region = Rect2( 192, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=40]
-atlas = ExtResource( 4 )
-region = Rect2( 240, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=23]
 atlas = ExtResource( 3 )
@@ -73,6 +38,54 @@ region = Rect2( 192, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=28]
 atlas = ExtResource( 3 )
+region = Rect2( 240, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=51]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=52]
+atlas = ExtResource( 9 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=53]
+atlas = ExtResource( 9 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=54]
+atlas = ExtResource( 9 )
+region = Rect2( 144, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=55]
+atlas = ExtResource( 9 )
+region = Rect2( 192, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=56]
+atlas = ExtResource( 9 )
+region = Rect2( 240, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 4 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 4 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 4 )
+region = Rect2( 144, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 4 )
+region = Rect2( 192, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 4 )
 region = Rect2( 240, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=41]
@@ -129,29 +142,17 @@ flags = 19
 atlas = ExtResource( 1 )
 region = Rect2( 240, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=51]
-atlas = ExtResource( 9 )
+[sub_resource type="AtlasTexture" id=48]
+atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=52]
-atlas = ExtResource( 9 )
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 5 )
 region = Rect2( 48, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=53]
-atlas = ExtResource( 9 )
+[sub_resource type="AtlasTexture" id=50]
+atlas = ExtResource( 5 )
 region = Rect2( 96, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=54]
-atlas = ExtResource( 9 )
-region = Rect2( 144, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=55]
-atlas = ExtResource( 9 )
-region = Rect2( 192, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=56]
-atlas = ExtResource( 9 )
-region = Rect2( 240, 0, 48, 48 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -160,9 +161,14 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 48 ), SubResource( 49 ), SubResource( 49 ), SubResource( 50 ) ],
+"frames": [ SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ) ],
 "loop": false,
-"name": "dying",
+"name": "attack2",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ) ],
+"loop": true,
+"name": "run",
 "speed": 8.0
 }, {
 "frames": [ SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ) ],
@@ -170,12 +176,7 @@ animations = [ {
 "name": "attack",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ) ],
-"loop": false,
-"name": "attack2",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 48 ), SubResource( 49 ), SubResource( 49 ), SubResource( 50 ) ],
+"frames": [ SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 46 ), SubResource( 46 ), SubResource( 46 ), SubResource( 46 ), SubResource( 46 ), SubResource( 46 ) ],
 "loop": false,
 "name": "dying",
 "speed": 8.0
@@ -185,14 +186,14 @@ animations = [ {
 "name": "attack3",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ) ],
-"loop": true,
-"name": "run",
-"speed": 8.0
+"frames": [ SubResource( 48 ), SubResource( 49 ), SubResource( 49 ), SubResource( 50 ) ],
+"loop": false,
+"name": "hurt",
+"speed": 12.0
 } ]
 
 [sub_resource type="CylinderShape" id=4]
-radius = 2.53153
+radius = 3.91186
 height = 1.25346
 
 [sub_resource type="CylinderShape" id=18]
@@ -204,7 +205,7 @@ radius = 0.497793
 height = 1.21893
 
 [sub_resource type="CylinderShape" id=3]
-radius = 0.539897
+radius = 0.328788
 height = 1.52016
 
 [node name="Enemy" type="KinematicBody" groups=["Enemy"]]
@@ -212,13 +213,17 @@ transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
 collision_layer = 4
 collision_mask = 4
 script = ExtResource( 8 )
+attackCooldownSeconds = 2.0
+attackDamage = 8
+health = 70
 
 [node name="Pivot" type="Spatial" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
 [node name="Animation" type="AnimatedSprite3D" parent="Pivot"]
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.398568, 0 )
 frames = SubResource( 2 )
-animation = "attack3"
+animation = "idle"
 script = ExtResource( 7 )
 
 [node name="PlayerRange" type="Area" parent="Pivot"]
@@ -249,6 +254,8 @@ shape = SubResource( 3 )
 
 [node name="EnemyHit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 10 )
+
+[node name="EnemyAttacking" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="body_entered" from="Pivot/PlayerRange" to="." method="_on_PlayerRange_body_entered"]
 [connection signal="body_exited" from="Pivot/PlayerRange" to="." method="_on_PlayerRange_body_exited"]

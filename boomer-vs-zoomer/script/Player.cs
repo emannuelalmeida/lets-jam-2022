@@ -109,9 +109,11 @@ public class Player : KinematicBody
 		{
 			canHit = false;
 			List<Node> enemies = attackHitbox.GetOverlappingBodies().Cast<Node>().Where(x => x.IsInGroup("Enemy")).ToList();
-			GD.Print($"Enemies: {enemies.Count}");
 			enemies.ForEach(x => {
-				x.Call("HurtEnemy", attackDamage);
+                if(x.HasMethod("HurtEnemy"))
+                {
+				    x.Call("HurtEnemy", attackDamage);
+                }
 			});
 		}
 	}

@@ -1,13 +1,15 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://textures/street-asphalt-64x64.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://textures/bg1.png" type="Texture" id=3]
 [ext_resource path="res://scenes/Stage.gd" type="Script" id=4]
 [ext_resource path="res://scenes/CameraMovement.cs" type="Script" id=5]
-[ext_resource path="res://scenes/Objects/Enemy.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/Objects/Enemy_wood.tscn" type="PackedScene" id=7]
-[ext_resource path="res://bgs/THEME 1 EXTENDED.mp3" type="AudioStream" id=8]
+[ext_resource path="res://scenes/Objects/Enemy_cop_1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Objects/Enemy_cop_3.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Objects/Enemy_cop_2.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Objects/Enemy_cop_boss.tscn" type="PackedScene" id=9]
+[ext_resource path="res://bgs/THEME 1 EXTENDED.mp3" type="AudioStream" id=10]
 
 [sub_resource type="BoxShape" id=1]
 margin = 0.001
@@ -23,8 +25,14 @@ size = Vector3( 60, 2, 10 )
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 28.5781, 15.1572, 1.41508 )
 
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 1, 6.52641, 5.91047 )
+
 [sub_resource type="BoxShape" id=5]
-extents = Vector3( 10.064, 10.0514, 41.5902 )
+extents = Vector3( 10.064, 12.6861, 43.0685 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 1.81141, 13.42, 37.6938 )
 
 [node name="Screen" type="Spatial"]
 
@@ -32,7 +40,7 @@ extents = Vector3( 10.064, 10.0514, 41.5902 )
 script = ExtResource( 4 )
 
 [node name="Ground" type="StaticBody" parent="Stage"]
-transform = Transform( 3.67475, 0, 0, 0, 1, 0, 0, 0, 1, 73.1196, -5.05583, 0 )
+transform = Transform( 6.273, 0, 0, 0, 1, 0, 0, 0, 1, 150.003, -5.05583, 0 )
 visible = false
 
 [node name="CollisionShape" type="CollisionShape" parent="Stage/Ground"]
@@ -52,17 +60,23 @@ shape = SubResource( 4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00518894, 7.65764, 10.31 )
 shape = SubResource( 4 )
 
-[node name="Background" type="Sprite3D" parent="Stage"]
-transform = Transform( 5, 0, 0, 0, 3.53553, 1.39371, 0, -3.53553, 1.39371, 0, 6.06101, -7.73203 )
-texture = ExtResource( 3 )
-
 [node name="Background2" type="Sprite3D" parent="Stage"]
-transform = Transform( 5, 0, 0, 0, 3.53553, 1.39371, 0, -3.53553, 1.39371, 60.1096, 6.06101, -7.73203 )
+transform = Transform( 5, 0, 0, 0, 3.53553, 1.39371, 0, -3.53553, 1.39371, 282.067, -5.49396, -19.287 )
 texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 12500, 588 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="Background3" type="Sprite3D" parent="Stage"]
-transform = Transform( 5, 0, 0, 0, 3.53553, 1.39371, 0, -3.53553, 1.39371, 119.932, 6.06101, -7.73203 )
-texture = ExtResource( 3 )
+[node name="EndStage" type="Area" parent="Stage"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 148.394, 0, 0 )
+collision_layer = 256
+collision_mask = 256
+
+[node name="CollisionShape" type="CollisionShape" parent="Stage/EndStage"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.24943, 0 )
+shape = SubResource( 7 )
 
 [node name="Light" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 12.5813, 2.83975 )
@@ -70,38 +84,102 @@ light_color = Color( 0.105882, 0.592157, 0.0509804, 1 )
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -28.8818, 2.77621, 0 )
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -28.8818, 2.63039, 0 )
 collision/safe_margin = 1.0
 
 [node name="CameraPivot" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -13.2661, 19.0411, 11.5839 )
 
 [node name="Camera" type="Camera" parent="CameraPivot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 projection = 1
 size = 20.0
 script = ExtResource( 5 )
 minX = -13.0
-maxX = 133.0
+maxX = 210.0
 
 [node name="EnemyDetectionArea" type="Area" parent="CameraPivot/Camera"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 collision_mask = 4
 
 [node name="CollisionShape" type="CollisionShape" parent="CameraPivot/Camera/EnemyDetectionArea"]
+transform = Transform( 1.09448, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 5 )
 
-[node name="Tween" type="Tween" parent="CameraPivot/Camera"]
+[node name="CameraBounds" type="KinematicBody" parent="CameraPivot/Camera"]
+collision_layer = 256
+collision_mask = 256
 
-[node name="Enemy" parent="." instance=ExtResource( 6 )]
-transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 15.104, 2.25973, 0.208467 )
+[node name="CollisionShape" type="CollisionShape" parent="CameraPivot/Camera/CameraBounds"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9528, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="CameraPivot/Camera/CameraBounds"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.9903, 0, 0 )
+shape = SubResource( 6 )
 
 [node name="BGS" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
-volume_db = -3.545
+stream = ExtResource( 10 )
+volume_db = -9.613
 autoplay = true
 
-[node name="Enemy2" parent="." instance=ExtResource( 7 )]
-transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 22.048, 2.4015, -0.622849 )
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Blue_Cop_1" parent="Enemies" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 5.67261, 3.14326, -1.23306 )
+
+[node name="Blue_Cop_2" parent="Enemies" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 5.67261, 3.14326, 4.13982 )
+
+[node name="Green_Cop_1" parent="Enemies" instance=ExtResource( 8 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 31.4345, 3.14345, 1.14736 )
+
+[node name="Green_Cop_2" parent="Enemies" instance=ExtResource( 8 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 104.966, 3.14345, 1.14736 )
+
+[node name="Green_Cop_3" parent="Enemies" instance=ExtResource( 8 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 104.966, 3.14345, 3.68812 )
+
+[node name="Brown_Cop_1" parent="Enemies" instance=ExtResource( 7 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 55.3885, 3.46056, 3.13008 )
+attackCooldownSeconds = 1.75
+
+[node name="Blue_Cop_3" parent="Enemies" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 27.4823, 3.14326, 4.32462 )
+
+[node name="Blue_Cop_4" parent="Enemies" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 52.6679, 3.14326, 4.32462 )
+
+[node name="Blue_Cop_5" parent="Enemies" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 53.128, 3.14326, 0.437483 )
+
+[node name="Blue_Cop_6" parent="Enemies" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 101.338, 3.14326, -0.0732985 )
+
+[node name="Blue_Cop_7" parent="Enemies" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 101.338, 3.14326, 4.91726 )
+
+[node name="Brown_Cop_2" parent="Enemies" instance=ExtResource( 7 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 83.4259, 3.46056, -0.626216 )
+attackCooldownSeconds = 1.75
+
+[node name="Brown_Cop_3" parent="Enemies" instance=ExtResource( 7 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 83.0908, 3.46056, 5.82665 )
+attackCooldownSeconds = 1.75
+
+[node name="Brown_Cop_4" parent="Enemies" instance=ExtResource( 7 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 83.0908, 3.46056, 3.01772 )
+attackCooldownSeconds = 1.75
+
+[node name="Brown_Cop_5" parent="Enemies" instance=ExtResource( 7 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 127.9, 3.46056, 1.39927 )
+attackCooldownSeconds = 1.75
+
+[node name="Brown_Cop_6" parent="Enemies" instance=ExtResource( 7 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 127.9, 3.46056, 5.79771 )
+attackCooldownSeconds = 1.75
+
+[node name="Boss_Cop" parent="Enemies" instance=ExtResource( 9 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 134.235, 2.57811, 2.40625 )
 
 [connection signal="gameplay_entered" from="Stage/Ground/LowerBounds" to="Player" method="_on_LowerBounds_gameplay_entered"]
-[connection signal="TriggerGameOver" from="Player" to="Stage" method="_on_Player_TriggerGameOver"]
+[connection signal="body_entered" from="Stage/EndStage" to="Stage" method="_on_EndStage_body_entered"]
