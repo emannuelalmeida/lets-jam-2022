@@ -68,9 +68,6 @@ public class Enemy : KinematicBody
     public override void _Process(float delta)
     {
         deltaRef = delta;
-        //Debug
-        if(Input.IsActionJustPressed("attack"))
-            HurtEnemy(10);
 
         translate = Vector3.Zero;
 
@@ -196,8 +193,8 @@ public class Enemy : KinematicBody
     {
         var instance = hurtAnimation.Instance<Spatial>();
         hurtAnimationSource.AddChild(instance);
-        GD.Print($"Player was HIT for {attackDamage} damage");
-        EmitSignal("HurtPlayer", attackDamage);
+
+        player.Call("Hurt", attackDamage);
     }
 
     public void HurtEnemy(int damage)

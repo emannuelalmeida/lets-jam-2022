@@ -6,7 +6,6 @@
 [ext_resource path="res://scenes/Stage.gd" type="Script" id=4]
 [ext_resource path="res://scenes/Camera.gd" type="Script" id=5]
 [ext_resource path="res://scenes/Objects/Enemy.tscn" type="PackedScene" id=6]
-[ext_resource path="res://bgs/THEME 1 EXTENDED.mp3" type="AudioStream" id=7]
 [ext_resource path="res://scenes/Objects/Enemy_wood.tscn" type="PackedScene" id=7]
 
 [sub_resource type="BoxShape" id=1]
@@ -58,7 +57,7 @@ light_color = Color( 0.105882, 0.592157, 0.0509804, 1 )
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -15.2146, 4.26225, 0 )
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -15.2146, 2.77621, 0 )
 collision/safe_margin = 1.0
 
 [node name="CameraPivot" type="Position3D" parent="."]
@@ -74,7 +73,6 @@ script = ExtResource( 5 )
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 2.60311, 2.25973, 0.208467 )
 
 [node name="BGS" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
 autoplay = true
 
 [node name="Enemy2" parent="." instance=ExtResource( 7 )]
