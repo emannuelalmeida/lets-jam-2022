@@ -1,8 +1,8 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://textures/street-asphalt-64x64.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://textures/bg1.png" type="Texture" id=3]
+[ext_resource path="res://textures/hp_bar_fill.png" type="Texture" id=3]
 [ext_resource path="res://scenes/Stage.gd" type="Script" id=4]
 [ext_resource path="res://scenes/CameraMovement.cs" type="Script" id=5]
 [ext_resource path="res://scenes/Objects/Enemy_cop_1.tscn" type="PackedScene" id=6]
@@ -10,6 +10,9 @@
 [ext_resource path="res://scenes/Objects/Enemy_cop_2.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Objects/Enemy_cop_boss.tscn" type="PackedScene" id=9]
 [ext_resource path="res://bgs/THEME 1 EXTENDED.mp3" type="AudioStream" id=10]
+[ext_resource path="res://textures/bg1.png" type="Texture" id=11]
+[ext_resource path="res://fonts/8_bit_arcade_in.tres" type="DynamicFont" id=12]
+[ext_resource path="res://textures/hp_bar_border.png" type="Texture" id=13]
 
 [sub_resource type="BoxShape" id=1]
 margin = 0.001
@@ -34,9 +37,7 @@ extents = Vector3( 10.064, 12.6861, 43.0685 )
 [sub_resource type="BoxShape" id=6]
 extents = Vector3( 1.81141, 13.42, 37.6938 )
 
-[sub_resource type="Theme" id=6]
-
-[sub_resource type="Theme" id=7]
+[sub_resource type="Theme" id=8]
 
 [node name="Screen" type="Spatial"]
 
@@ -66,7 +67,7 @@ shape = SubResource( 4 )
 
 [node name="Background2" type="Sprite3D" parent="Stage"]
 transform = Transform( 5, 0, 0, 0, 3.53553, 1.39371, 0, -3.53553, 1.39371, 282.067, -5.49396, -19.287 )
-texture = ExtResource( 3 )
+texture = ExtResource( 11 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 12500, 588 )
 __meta__ = {
@@ -95,7 +96,6 @@ collision/safe_margin = 1.0
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -13.2661, 19.0411, 11.5839 )
 
 [node name="Camera" type="Camera" parent="CameraPivot"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 projection = 1
 size = 20.0
 script = ExtResource( 5 )
@@ -191,9 +191,8 @@ transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 134.235, 2.57811, 2.40625 )
 margin_left = 13.0
 margin_right = 205.0
 margin_bottom = 81.0
-theme = SubResource( 6 )
 custom_colors/font_color = Color( 0.709804, 0.168627, 0.0588235, 1 )
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 12 )
 text = "Our Hero"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -204,9 +203,9 @@ margin_left = 809.0
 margin_top = 5.0
 margin_right = 1016.0
 margin_bottom = 80.0
-theme = SubResource( 7 )
+theme = SubResource( 8 )
 custom_colors/font_color = Color( 0.709804, 0.168627, 0.0588235, 1 )
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 12 )
 text = "EnemyName"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -217,8 +216,8 @@ margin_left = 7.0
 margin_top = 35.0
 margin_right = 242.0
 margin_bottom = 81.0
-texture_under = ExtResource( 11 )
-texture_progress = ExtResource( 10 )
+texture_over = ExtResource( 13 )
+texture_progress = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -228,8 +227,8 @@ margin_left = 795.0
 margin_top = 44.0
 margin_right = 1015.0
 margin_bottom = 84.0
-texture_under = ExtResource( 11 )
-texture_progress = ExtResource( 10 )
+texture_over = ExtResource( 13 )
+texture_progress = ExtResource( 3 )
 fill_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
