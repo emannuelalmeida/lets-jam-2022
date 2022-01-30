@@ -60,29 +60,3 @@ jobs:
         with:
           name: linux
           path: build/linux
-  export-web:
-    name: Export to Web
-    runs-on: ubuntu-latest
-    container:
-      image: barichello/godot-ci:3.4.2
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          lfs: true
-      - name: Setup
-        run: |
-          mkdir -v -p ~/.local/share/godot/templates
-          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
-      - name: Web Build
-        run: |
-          cd $EXPORT_NAME
-          godot -v --export "HTML5" ../docs/index.html
-      - name: Install rsync 📚
-        run: |
-          apt-get update && apt-get install -y rsync
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@releases/v3
-        with:
-          BRANCH: gh-pages
-          FOLDER: docs

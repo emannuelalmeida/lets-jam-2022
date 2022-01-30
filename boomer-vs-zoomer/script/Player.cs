@@ -56,6 +56,7 @@ public class Player : KinematicBody
 		stateMachine.AddState(PlayerStates.DYING, "dead", null, () => UpdateDying());
 
 		animation.Connect("animation_finished", this, "OnAnimationFinished");
+		EmitSignal("TriggerPlayerHudUpdate", currentHealth, maxHealth);
 	}
 	
 	public override void _Process(float delta)
@@ -197,10 +198,14 @@ public class Player : KinematicBody
 		}
 		else
 			stateMachine.ChangeState(PlayerStates.HURT);
-			
+		
+		EmitSignal("TriggerPlayerHudUpdate", currentHealth, maxHealth);
 		playerHit.Play();
 	}
 
 	[Signal]
 	public delegate void TriggerGameOver();
+	
+	[Signal]
+	public delegate void TriggerPlayerHudUpdate(int currentLife, int maxLife);
 }

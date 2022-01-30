@@ -4,95 +4,94 @@ using System;
 
 public class Enemy : KinematicBody
 {
-    enum EnemyStates {
-        IDLE,
-        FOLLOW,
-        ATTACK,
-        ATTACK2,
-        ATTACK3,
-        HURT,
-        DYING,
-    }
+	enum EnemyStates {
+		IDLE,
+		FOLLOW,
+		ATTACK,
+		ATTACK2,
+		ATTACK3,
+		HURT,
+		DYING,
+	}
 
-    //Node references
-    AnimatedSprite3D animation;
-    KinematicBody player;
-    Area attackHitbox;
-    Position3D hurtAnimationSource;
-    Spatial pivot;
+	//Node references
+	AnimatedSprite3D animation;
+	KinematicBody player;
+	Area attackHitbox;
+	Position3D hurtAnimationSource;
+	Spatial pivot;
 	AudioStreamPlayer2D enemyHit;
-    //===============
+	//===============
 
-    StateMachine<EnemyStates> stateMachine;
-    Vector3 translate;
-    float deltaRef = 0f;
+	StateMachine<EnemyStates> stateMachine;
+	Vector3 translate;
+	float deltaRef = 0f;
 
-    //Parameters
-    [Export]
-    float MoveSpeed {get; set;} = 4f;
+	//Parameters
+	[Export]
+	float MoveSpeed {get; set;} = 4f;
 
-    [Export]
-    float attackCooldownSeconds = 3f;
+	[Export]
+	float attackCooldownSeconds = 3f;
 
-    [Export]
-    int attackDamage = 5;
+	[Export]
+	int attackDamage = 5;
 
-    [Export]
-    int health = 100;
+	[Export]
+	int health = 100;
 
-    bool playerInAttackRange = false;
-    bool canAttack = true;
-    bool canHit = true;
-    bool invulnerable = false;
-    bool dead = false;
+	bool playerInAttackRange = false;
+	bool canAttack = true;
+	bool canHit = true;
+	bool invulnerable = false;
+	bool dead = false;
 
-    PackedScene hurtAnimation;
+	PackedScene hurtAnimation;
 
-    [Signal]
-    delegate void HurtPlayer(int damage);
+	[Signal]
+	delegate void HurtPlayer(int damage);
 
-    public override void _Ready()
-    {
-        animation = GetNode<AnimatedSprite3D>("Pivot/Animation");
-        attackHitbox = GetNode<Area>("Pivot/AttackHitbox");
-        pivot = GetNode<Spatial>("Pivot");
+	public override void _Ready()
+	{
+		animation = GetNode<AnimatedSprite3D>("Pivot/Animation");
+		attackHitbox = GetNode<Area>("Pivot/AttackHitbox");
+		pivot = GetNode<Spatial>("Pivot");
 		enemyHit = GetNode<AudioStreamPlayer2D>("EnemyHit");
 
-        hurtAnimationSource = GetNode<Position3D>("Pivot/AttackHitbox/CollisionShape/HurtAnimationSource");
+		hurtAnimationSource = GetNode<Position3D>("Pivot/AttackHitbox/CollisionShape/HurtAnimationSource");
 
-        stateMachine = new StateMachine<EnemyStates>(animation);
+		stateMachine = new StateMachine<EnemyStates>(animation);
 
-        hurtAnimation = ResourceLoader.Load<PackedScene>("res://scenes/Objects/Hurt_Animation.tscn");
+		hurtAnimation = ResourceLoader.Load<PackedScene>("res://scenes/Objects/Hurt_Animation.tscn");
 
-        stateMachine.AddState(EnemyStates.IDLE, "idle", null, () => UpdateIdle());
-        stateMachine.AddState(EnemyStates.FOLLOW, "run", null, () => UpdateFollow());
-        stateMachine.AddState(EnemyStates.ATTACK, "attack", () => OnEnterAttack(), () => UpdateAttack());
-        // stateMachine.AddState(EnemyStates.ATTACK2, "attack2", () => OnEnterAttack(), () => UpdateAttack());
-        // stateMachine.AddState(EnemyStates.ATTACK3, "attack3", () => OnEnterAttack(), () => UpdateAttack());
-        stateMachine.AddState(EnemyStates.HURT, "hurt", null, null);
-        stateMachine.AddState(EnemyStates.DYING, "dying", () => OnEnterDying(), () => UpdateDying(deltaRef));
+		stateMachine.AddState(EnemyStates.IDLE, "idle", null, () => UpdateIdle());
+		stateMachine.AddState(EnemyStates.FOLLOW, "run", null, () => UpdateFollow());
+		stateMachine.AddState(EnemyStates.ATTACK, "attack", () => OnEnterAttack(), () => UpdateAttack());
+		stateMachine.AddState(EnemyStates.HURT, "hurt", null, null);
+		stateMachine.AddState(EnemyStates.DYING, "dying", () => OnEnterDying(), () => UpdateDying(deltaRef));
 
-        animation.Connect("animation_finished", this, "OnAnimationFinished");
+		animation.Connect("animation_finished", this, "OnAnimationFinished");
+		this.Connect("TriggerEnemyHudUpdate", GetTree().CurrentScene.GetNode<Node>("Stage"), "_on_Enemy_TriggerEnemyHudUpdate");
 
-        pivot.RotationDegrees = new Vector3(0,180,0);
-    }
+		pivot.RotationDegrees = new Vector3(0,180,0);
+	}
 
-    public override void _Process(float delta)
-    {
-        deltaRef = delta;
+	public override void _Process(float delta)
+	{
+		deltaRef = delta;
 
-        translate = Vector3.Zero;
+		translate = Vector3.Zero;
 
-        stateMachine.UpdateCurrentState();
+		stateMachine.UpdateCurrentState();
 
-        this.MoveAndSlide(translate);
+		this.MoveAndSlide(translate);
 
-        if(translate.x > 0.01f)
-            pivot.RotationDegrees = new Vector3(0, 0, 0);
+		if(translate.x > 0.01f)
+			pivot.RotationDegrees = new Vector3(0, 0, 0);
 
-        else if(translate.x < -0.01f)
-            pivot.RotationDegrees = new Vector3(0, 180, 0);
-    }
+		else if(translate.x < -0.01f)
+			pivot.RotationDegrees = new Vector3(0, 180, 0);
+	}
 
 #region States
 
@@ -215,6 +214,7 @@ public class Enemy : KinematicBody
 		else
 			stateMachine.ChangeState(EnemyStates.DYING);
 		
+		EmitSignal("TriggerEnemyHudUpdate", GetName(), health);
 		enemyHit.Play();
 	}
 
@@ -255,4 +255,7 @@ public class Enemy : KinematicBody
 	}
 
 #endregion
+
+[Signal]
+public delegate void TriggerEnemyHudUpdate(string name, int health);
 }
