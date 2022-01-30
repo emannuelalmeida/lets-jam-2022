@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/CREDITS-EXTENDED.ogg-d90360d3d7388acb8d2e995a29a4385f.oggstr"
+
+[deps]
+
+source_file="res://bgs/CREDITS-EXTENDED.ogg"
+dest_files=[ "res://.import/CREDITS-EXTENDED.ogg-d90360d3d7388acb8d2e995a29a4385f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

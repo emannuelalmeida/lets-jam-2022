@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/KEYBOARD TYPING.ogg-fce8107f8aaba35fbcb803196bbfc4f9.oggstr"
+
+[deps]
+
+source_file="res://sfx/KEYBOARD TYPING.ogg"
+dest_files=[ "res://.import/KEYBOARD TYPING.ogg-fce8107f8aaba35fbcb803196bbfc4f9.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

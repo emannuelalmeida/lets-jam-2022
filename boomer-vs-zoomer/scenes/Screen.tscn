@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/CameraMovement.cs" type="Script" id=5]
 [ext_resource path="res://scenes/Objects/Enemy.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Objects/Enemy_wood.tscn" type="PackedScene" id=7]
+[ext_resource path="res://bgs/THEME 1 EXTENDED.mp3" type="AudioStream" id=8]
 
 [sub_resource type="BoxShape" id=1]
 margin = 0.001
@@ -95,9 +96,12 @@ shape = SubResource( 5 )
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 15.104, 2.25973, 0.208467 )
 
 [node name="BGS" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -3.545
 autoplay = true
 
 [node name="Enemy2" parent="." instance=ExtResource( 7 )]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 22.048, 2.4015, -0.622849 )
 
 [connection signal="gameplay_entered" from="Stage/Ground/LowerBounds" to="Player" method="_on_LowerBounds_gameplay_entered"]
+[connection signal="TriggerGameOver" from="Player" to="Stage" method="_on_Player_TriggerGameOver"]

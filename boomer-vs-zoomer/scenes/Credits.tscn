@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://textures/creditos.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Credits.gd" type="Script" id=2]
+[ext_resource path="res://bgs/CREDITS-EXTENDED.ogg" type="AudioStream" id=3]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -17,3 +18,7 @@ script = ExtResource( 2 )
 [node name="Image" type="AnimatedSprite" parent="."]
 position = Vector2( 523, 299 )
 frames = SubResource( 1 )
+
+[node name="CreditsTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
