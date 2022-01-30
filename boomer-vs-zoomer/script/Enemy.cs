@@ -67,12 +67,14 @@ public class Enemy : KinematicBody
         stateMachine.AddState(EnemyStates.IDLE, "idle", null, () => UpdateIdle());
         stateMachine.AddState(EnemyStates.FOLLOW, "run", null, () => UpdateFollow());
         stateMachine.AddState(EnemyStates.ATTACK, "attack", () => OnEnterAttack(), () => UpdateAttack());
-        stateMachine.AddState(EnemyStates.ATTACK2, "attack2", () => OnEnterAttack(), () => UpdateAttack());
-        stateMachine.AddState(EnemyStates.ATTACK3, "attack3", () => OnEnterAttack(), () => UpdateAttack());
+        // stateMachine.AddState(EnemyStates.ATTACK2, "attack2", () => OnEnterAttack(), () => UpdateAttack());
+        // stateMachine.AddState(EnemyStates.ATTACK3, "attack3", () => OnEnterAttack(), () => UpdateAttack());
         stateMachine.AddState(EnemyStates.HURT, "hurt", null, null);
         stateMachine.AddState(EnemyStates.DYING, "dying", () => OnEnterDying(), () => UpdateDying(deltaRef));
 
         animation.Connect("animation_finished", this, "OnAnimationFinished");
+
+        pivot.RotationDegrees = new Vector3(0,180,0);
     }
 
     public override void _Process(float delta)
@@ -101,13 +103,7 @@ public class Enemy : KinematicBody
 		
 		if(playerInAttackRange && canAttack)
 		{
-			float atkRng = GD.Randf();
-			if(atkRng < 0.5f)
-				stateMachine.ChangeState(EnemyStates.ATTACK);
-			else if(atkRng < 0.8f)
-				stateMachine.ChangeState(EnemyStates.ATTACK2);
-			else 
-				stateMachine.ChangeState(EnemyStates.ATTACK3);
+            stateMachine.ChangeState(EnemyStates.ATTACK);
 		}
 	}
 

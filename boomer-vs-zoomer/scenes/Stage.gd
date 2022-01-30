@@ -16,3 +16,9 @@ func _move_camera_to_next_scene():
 
 func _on_Player_TriggerGameOver():
 	get_tree().change_scene("res://scenes/GameOver.tscn")
+
+
+func _on_EndStage_body_entered(body):
+	if(body.is_in_group("Player")):
+		get_tree().change_scene("res://scenes/GameOver.tscn")
+	pass # Replace with function body.

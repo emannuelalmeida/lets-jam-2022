@@ -15,38 +15,6 @@ flags = 19
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=29]
-atlas = ExtResource( 7 )
-region = Rect2( 0, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=30]
-atlas = ExtResource( 7 )
-region = Rect2( 48, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=31]
-atlas = ExtResource( 7 )
-region = Rect2( 96, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=32]
-atlas = ExtResource( 7 )
-region = Rect2( 144, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=33]
-atlas = ExtResource( 7 )
-region = Rect2( 192, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=34]
-atlas = ExtResource( 7 )
-region = Rect2( 240, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=35]
-atlas = ExtResource( 7 )
-region = Rect2( 288, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=36]
-atlas = ExtResource( 7 )
-region = Rect2( 336, 0, 48, 48 )
-
 [sub_resource type="AtlasTexture" id=5]
 flags = 19
 atlas = ExtResource( 4 )
@@ -107,35 +75,20 @@ flags = 19
 atlas = ExtResource( 6 )
 region = Rect2( 240, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=37]
+[sub_resource type="AtlasTexture" id=20]
 flags = 19
-atlas = ExtResource( 8 )
+atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=38]
+[sub_resource type="AtlasTexture" id=21]
 flags = 19
-atlas = ExtResource( 8 )
+atlas = ExtResource( 1 )
 region = Rect2( 48, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=39]
+[sub_resource type="AtlasTexture" id=22]
 flags = 19
-atlas = ExtResource( 8 )
-region = Rect2( 96, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=40]
-flags = 19
-atlas = ExtResource( 8 )
-region = Rect2( 144, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=41]
-flags = 19
-atlas = ExtResource( 8 )
-region = Rect2( 192, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=42]
-flags = 19
-atlas = ExtResource( 8 )
-region = Rect2( 240, 0, 48, 48 )
+atlas = ExtResource( 1 )
+region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=11]
 flags = 19
@@ -172,20 +125,67 @@ flags = 19
 atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=20]
-flags = 19
-atlas = ExtResource( 1 )
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=21]
-flags = 19
-atlas = ExtResource( 1 )
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 7 )
 region = Rect2( 48, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 7 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 7 )
+region = Rect2( 144, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 7 )
+region = Rect2( 192, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 7 )
+region = Rect2( 240, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 7 )
+region = Rect2( 288, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 7 )
+region = Rect2( 336, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=37]
 flags = 19
-atlas = ExtResource( 1 )
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=38]
+flags = 19
+atlas = ExtResource( 8 )
 region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=39]
+flags = 19
+atlas = ExtResource( 8 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=40]
+flags = 19
+atlas = ExtResource( 8 )
+region = Rect2( 144, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=41]
+flags = 19
+atlas = ExtResource( 8 )
+region = Rect2( 192, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=42]
+flags = 19
+atlas = ExtResource( 8 )
+region = Rect2( 240, 0, 48, 48 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -193,11 +193,6 @@ animations = [ {
 "loop": true,
 "name": "idle",
 "speed": 5.0
-}, {
-"frames": [ SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ) ],
-"loop": false,
-"name": "attack2",
-"speed": 10.0
 }, {
 "frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
 "loop": true,
@@ -209,24 +204,29 @@ animations = [ {
 "name": "dying",
 "speed": 8.0
 }, {
-"frames": [ SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ],
+"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 20 ) ],
 "loop": false,
-"name": "attack3",
-"speed": 10.0
+"name": "hurt",
+"speed": 12.0
 }, {
 "frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
 "loop": false,
 "name": "attack",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 20 ) ],
+"frames": [ SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ) ],
 "loop": false,
-"name": "hurt",
-"speed": 12.0
+"name": "attack2",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ],
+"loop": false,
+"name": "attack3",
+"speed": 10.0
 } ]
 
 [sub_resource type="CylinderShape" id=4]
-radius = 2.53153
+radius = 3.58809
 height = 1.25346
 
 [sub_resource type="CylinderShape" id=18]
@@ -238,7 +238,7 @@ radius = 0.497793
 height = 1.21893
 
 [sub_resource type="CylinderShape" id=3]
-radius = 0.539897
+radius = 0.341137
 height = 1.52016
 
 [node name="Enemy" type="KinematicBody" groups=["Enemy"]]
@@ -246,8 +246,11 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 collision_layer = 4
 collision_mask = 4
 script = ExtResource( 2 )
+attackCooldownSeconds = 1.5
+health = 60
 
 [node name="Pivot" type="Spatial" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
 [node name="Animation" type="AnimatedSprite3D" parent="Pivot"]
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.398568, 0 )
