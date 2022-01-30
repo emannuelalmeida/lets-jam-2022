@@ -24,11 +24,19 @@ public class Enemy : KinematicBody
 
     StateMachine<EnemyStates> stateMachine;
     Vector3 translate;
-
-    float MoveSpeed {get; set;} = 4f;
-    float attackCooldownSeconds = 3f;
     float deltaRef = 0f;
+
+    //Parameters
+    [Export]
+    float MoveSpeed {get; set;} = 4f;
+
+    [Export]
+    float attackCooldownSeconds = 3f;
+
+    [Export]
     int attackDamage = 5;
+
+    [Export]
     int health = 100;
 
     bool playerInAttackRange = false;
