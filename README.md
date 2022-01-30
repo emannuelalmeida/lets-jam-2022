@@ -16,5 +16,6 @@ Code repository for the 2022 GGJ game
 ## Credits and merits
 
 Street pattern texture: https://www.manytextures.com/texture/65/street+asphalt/ (CC)
+Font: https://www.dafont.com/pt/8-bit-arcade.font
 
 

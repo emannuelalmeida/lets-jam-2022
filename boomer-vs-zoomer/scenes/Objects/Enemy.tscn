@@ -42,6 +42,36 @@ flags = 19
 atlas = ExtResource( 4 )
 region = Rect2( 240, 0, 48, 48 )
 
+[sub_resource type="AtlasTexture" id=23]
+flags = 19
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 19
+atlas = ExtResource( 6 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 19
+atlas = ExtResource( 6 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=26]
+flags = 19
+atlas = ExtResource( 6 )
+region = Rect2( 144, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=27]
+flags = 19
+atlas = ExtResource( 6 )
+region = Rect2( 192, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=28]
+flags = 19
+atlas = ExtResource( 6 )
+region = Rect2( 240, 0, 48, 48 )
+
 [sub_resource type="AtlasTexture" id=11]
 flags = 19
 atlas = ExtResource( 5 )
@@ -77,36 +107,6 @@ flags = 19
 atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=23]
-flags = 19
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=24]
-flags = 19
-atlas = ExtResource( 6 )
-region = Rect2( 48, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=25]
-flags = 19
-atlas = ExtResource( 6 )
-region = Rect2( 96, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=26]
-flags = 19
-atlas = ExtResource( 6 )
-region = Rect2( 144, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=27]
-flags = 19
-atlas = ExtResource( 6 )
-region = Rect2( 192, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=28]
-flags = 19
-atlas = ExtResource( 6 )
-region = Rect2( 240, 0, 48, 48 )
-
 [sub_resource type="AtlasTexture" id=20]
 flags = 19
 atlas = ExtResource( 1 )
@@ -134,15 +134,15 @@ animations = [ {
 "name": "run",
 "speed": 8.0
 }, {
-"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
-"loop": false,
-"name": "attack",
-"speed": 10.0
-}, {
 "frames": [ SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 28 ), SubResource( 28 ), SubResource( 28 ), SubResource( 28 ), SubResource( 28 ) ],
 "loop": false,
 "name": "dying",
 "speed": 8.0
+}, {
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"loop": false,
+"name": "attack",
+"speed": 10.0
 }, {
 "frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 20 ) ],
 "loop": false,
@@ -173,7 +173,6 @@ collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="Pivot" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="Animation" type="AnimatedSprite3D" parent="Pivot"]
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.398568, 0 )
