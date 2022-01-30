@@ -1,0 +1,9 @@
+[gd_resource type="DynamicFont" load_steps=2 format=2]
+
+[ext_resource path="res://fonts/8-bit Arcade Out.ttf" type="DynamicFontData" id=1]
+
+[resource]
+size = 50
+outline_color = Color( 0.482353, 0.0784314, 0.145098, 1 )
+use_filter = true
+font_data = ExtResource( 1 )
